@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+</head>
+<body>
+
+<h3>污染城市列表</h3>
+<ul id="aqi-list">
+    <li id="rank1">第一名：</li>
+    <li id="rank2">第二名：</li>
+    <li id="rank3">第三名：</li>
+
+</ul>
+
+<script type="text/javascript">
+
+    var aqiData = [
+        ["北京", 90],
+        ["上海", 50],
+        ["福州", 10],
+        ["广州", 50],
+        ["成都", 90],
+        ["西安", 100]
+    ];
+
+    (function () {
+
+        /*
+         在注释下方编写代码
+         遍历读取aqiData中各个城市的数据
+         将空气质量指数大于60的城市显示到aqi-list的列表中
+         */
+        //下面是排序函数
+        function compareNumbers(a, b) {
+            return b[1] - a[1];
+        }
+        var newArray = new Array(6);
+        newArray = aqiData.sort(compareNumbers);
+        //下面是筛选函数
+        var filterArr = new Array();
+        function isBigEnough(value) {
+            return value[1] >= 60;
+        }
+        filterArr= newArray.filter(isBigEnough);
+        //以下可以用一个函数来改进
+        var r1 = document.createElement("b");
+        var r1content=document.createTextNode(filterArr[0]);
+        r1.appendChild(r1content);
+        var r01 = document.getElementById("rank1");
+        r01.appendChild(r1);
+
+        var r2 = document.createElement("b");
+        var r2content=document.createTextNode(filterArr[1]);
+        r2.appendChild(r2content);
+        var r02= document.getElementById("rank2");
+        r02.appendChild(r2);
+
+        var r3 = document.createElement("b");
+        var r3content=document.createTextNode(filterArr[2]);
+        r3.appendChild(r3content);
+        var r03 = document.getElementById("rank3");
+        r03.appendChild(r3);
+
+
+
+    })();
+
+</script>
+</body>
+</html>
