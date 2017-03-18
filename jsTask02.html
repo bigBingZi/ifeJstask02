@@ -44,25 +44,15 @@
             return value[1] >= 60;
         }
         filterArr= newArray.filter(isBigEnough);
-        //以下可以用一个函数来改进
-        var r1 = document.createElement("b");
-        var r1content=document.createTextNode(filterArr[0]);
-        r1.appendChild(r1content);
-        var r01 = document.getElementById("rank1");
-        r01.appendChild(r1);
 
-        var r2 = document.createElement("b");
-        var r2content=document.createTextNode(filterArr[1]);
-        r2.appendChild(r2content);
-        var r02= document.getElementById("rank2");
-        r02.appendChild(r2);
-
-        var r3 = document.createElement("b");
-        var r3content=document.createTextNode(filterArr[2]);
-        r3.appendChild(r3content);
-        var r03 = document.getElementById("rank3");
-        r03.appendChild(r3);
-
+        //实现在HTML中输出结果
+       for(i=0;i<filterArr.length;i++){
+           var r = document.createElement("b");
+           var rContent=document.createTextNode(filterArr[i]);
+           r.appendChild(rContent);
+           var r0 = document.getElementById("rank"+(i+1));
+           r0.appendChild(r);
+       }
 
 
     })();
